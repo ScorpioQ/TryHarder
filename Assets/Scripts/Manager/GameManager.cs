@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
 
     public bool gameOver;
 
-    public List<Enemy> enemies = new List<Enemy>();
+    public List<CombatUnit> enemies = new List<CombatUnit>();
 
     public void Awake()
     {
@@ -38,12 +38,12 @@ public class GameManager : MonoBehaviour
         UIManager.instance.GameOverUI(gameOver);
     }
 
-    public void IsEnemy(Enemy enemy)
+    public void IsEnemy(CombatUnit enemy)
     {
         enemies.Add(enemy);
     }
 
-    public void EnemyDead(Enemy enemy)
+    public void EnemyDead(CombatUnit enemy)
     {
         enemies.Remove(enemy);
 

@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class AttackState : EnemyBaseState
 {
-    public override void EnterState(Enemy enemy)
+    public override void EnterState(CombatUnit enemy)
     {
         enemy.targetPoint = enemy.attackList[0];
         enemy.animState = 2;
     }
 
-    public override void OnUpdate(Enemy enemy)
+    public override void OnUpdate(CombatUnit enemy)
     {
         if (enemy.hasBomb)
             return;

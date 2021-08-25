@@ -15,8 +15,10 @@ public class Cucumber : Enemy, IDamageable
         anim.SetTrigger("hit");
     }
 
-    public void SetOff()
+    public override void AnimationEventSkillTrigger(int i)
     {
+        base.AnimationEventSkillTrigger(i);
+
         targetPoint.GetComponent<Bomb>().TurnOff();
     }
 }

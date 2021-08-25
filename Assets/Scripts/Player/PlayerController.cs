@@ -2,37 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour, IDamageable
+public class PlayerController : CombatUnit, IDamageable
 {
     private Rigidbody2D rb;
-    private Animator anim;
     private FixedJoystick joystick;
 
-    public float speed;
     public float jumpForce;
 
-    [Header("Player State")]
     public float health;
-    public bool isDead;
 
-    [Header("Ground Check")]
     public Transform groundCheck;
     public float checkRadius;
     public LayerMask groundLayer;
 
-    [Header("States Check")]
     public bool isGround;
     public bool isJump;
     public bool canJump;
 
-    [Header("Jump FX")]
     public GameObject jumpFX;
     public GameObject landFX;
 
-    [Header("Attack Settings")]
     public GameObject bombPrefab;
     public float nextAttack = 0;
-    public float attackRate = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -45,10 +36,11 @@ public class PlayerController : MonoBehaviour, IDamageable
 
         health = GameManager.instance.LoadHeadth();
         UIManager.instance.UpdateHealth(health);
+        isPlayer = true;
     }
 
     // Update is called once per frame
-    void Update()
+    public override void Update()
     {
         CheckInput();
         anim.SetBool("dead", isDead);
@@ -90,10 +82,12 @@ public class PlayerController : MonoBehaviour, IDamageable
         //float horizontalInput = Input.GetAxis("Horizontal");  // -1 ~ 1 ´øÐ¡Êý
         float horizontalInput = Input.GetAxisRaw("Horizontal"); // -1 ~ 1
 
-        if (joystick.Horizontal > 0)
-            horizontalInput = 1;
-        if (joystick.Horizontal < 0)
-            horizontalInput = -1;
+        if (joystick) {
+            if (joystick.Horizontal > 0)
+                horizontalInput = 1;
+            if (joystick.Horizontal < 0)
+                horizontalInput = -1;
+        }
 
         rb.velocity = new Vector2(horizontalInput * speed, rb.velocity.y);
 
@@ -140,8 +134,10 @@ public class PlayerController : MonoBehaviour, IDamageable
         }
     }
 
-    public void LandFX()
+    public override void AnimationEventLandStart()
     {
+        base.AnimationEventLandStart();
+
         landFX.SetActive(true);
         landFX.transform.position = transform.position + new Vector3(0, -0.75f, 0);
     }

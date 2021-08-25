@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class PatrolState : EnemyBaseState
 {
-    public override void EnterState(Enemy enemy)
+    public override void EnterState(CombatUnit enemy)
     {
         enemy.animState = 0;
         enemy.SwitchPoint();
     }
 
-    public override void OnUpdate(Enemy enemy)
+    public override void OnUpdate(CombatUnit enemy)
     {
         if (!enemy.anim.GetCurrentAnimatorStateInfo(0).IsName("idle"))
         {

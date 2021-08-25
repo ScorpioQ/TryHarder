@@ -12,7 +12,6 @@ public class Bomb : MonoBehaviour
     public float waitTime;
     public float bombForce;
 
-    [Header("Check")]
     public float radius;
     public LayerMask targetLayer;
 

@@ -16,8 +16,10 @@ public class Whale : Enemy, IDamageable
         anim.SetTrigger("hit");
     }
 
-    public void Swalow()
+    public override void AnimationEventSkillTrigger(int i)
     {
+        base.AnimationEventSkillTrigger(i);
+
         targetPoint.GetComponent<Bomb>().TurnOff();
         targetPoint.gameObject.SetActive(false);
 
