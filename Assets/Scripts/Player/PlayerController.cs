@@ -23,7 +23,6 @@ public class PlayerController : CombatUnit, IDamageable
     public GameObject landFX;
 
     public GameObject bombPrefab;
-    public float nextAttack = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -112,7 +111,10 @@ public class PlayerController : CombatUnit, IDamageable
 
     public void ButtonJump()
     {
-        canJump = true;
+        if (isGround)
+        {
+            canJump = true;
+        }
     }
 
     public void Attack()

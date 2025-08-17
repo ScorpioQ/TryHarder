@@ -1,10 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.Advertisements;
+using UnityEngine.UI;
 
-public class AdsButton : MonoBehaviour, IUnityAdsListener
+public class AdsButton : MonoBehaviour
 {
 #if UNITY_IOS
     private string gameID = "4256634";
@@ -23,8 +21,8 @@ public class AdsButton : MonoBehaviour, IUnityAdsListener
         if (adsButton)
             adsButton.onClick.AddListener(ShowRewardAds);
 
-        Advertisement.AddListener(this);
-        Advertisement.Initialize(gameID, true);
+        //Advertisement.AddListener(this);
+        //Advertisement.Initialize(gameID, true);
     }
 
     public void ShowRewardAds()
@@ -58,10 +56,10 @@ public class AdsButton : MonoBehaviour, IUnityAdsListener
     }
 
     public void OnUnityAdsReady(string placementId)
-    {
+    {/*
         if (Advertisement.IsReady(placementID))
         {
             Debug.Log("广告准备好了");
-        }
+        }*/
     }
 }

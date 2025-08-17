@@ -4258,10 +4258,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd72c9ecad4b5ff46a9e8f3b29f67267, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  jumpForce: 15
-  health: 3
+  anim: {fileID: 0}
+  animState: 0
+  headth: 0
   isDead: 0
+  hasBomb: 0
+  isBoss: 0
+  isPlayer: 0
+  speed: 10
+  pointA: {fileID: 0}
+  pointB: {fileID: 0}
+  targetPoint: {fileID: 0}
+  attackRate: 1
+  attackRange: 0
+  skillRange: 0
+  nextAttack: 0
+  attackList: []
+  jumpForce: 20
+  health: 3
   groundCheck: {fileID: 702280440}
   checkRadius: 0.2
   groundLayer:
@@ -4273,8 +4287,6 @@ MonoBehaviour:
   jumpFX: {fileID: 166785074}
   landFX: {fileID: 1094892121}
   bombPrefab: {fileID: 898622731426735820, guid: 3b9062c66662e0b4cbe3fbb78fb70f76, type: 3}
-  nextAttack: 0
-  attackRate: 1
 --- !u!95 &1699646124
 Animator:
   serializedVersion: 3

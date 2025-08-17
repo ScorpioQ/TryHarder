@@ -23,7 +23,7 @@ public class CombatUnit : MonoBehaviour
 
     public float attackRate;
     public float attackRange, skillRange;
-    private float nextAttack = 0;
+    public float nextAttack = 0;
 
     public List<Transform> attackList = new List<Transform>();
 
